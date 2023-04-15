@@ -8,6 +8,8 @@ packages = [{include = "salary_master_backend"}]
 
 [tool.poetry.dependencies]
 python = "~3.10"
+fastapi = "^0.95.0"
+uvicorn = "^0.21.1"
 
 
 [build-system]

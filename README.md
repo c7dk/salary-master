@@ -9,3 +9,9 @@ Run
 ```
 poetry shell
 ```
+
+To start the FastAPI server run
+
+```
+uvicorn main:app --reload
+```
