@@ -11,6 +11,7 @@ python = "~3.10"
 fastapi = "^0.95.0"
 uvicorn = "^0.21.1"
 alembic = "^1.10.3"
+psycopg2 = "^2.9.6"
 
 
 [build-system]
