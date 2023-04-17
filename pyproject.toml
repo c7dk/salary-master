@@ -10,6 +10,7 @@ packages = [{include = "salary_master_backend"}]
 python = "~3.10"
 fastapi = "^0.95.0"
 uvicorn = "^0.21.1"
+alembic = "^1.10.3"
 
 
 [build-system]
