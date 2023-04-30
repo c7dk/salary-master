@@ -17,17 +17,17 @@ async def jobs():
     conn_string = os.environ.get("DB_URL")
     engine = create_engine(conn_string)
     with engine.connect() as conn:
-        sql=text("SELECT occ_title, a_mean, tot_emp FROM jobs WHERE a_mean > 100000 ORDER BY a_mean;")
+        sql=text("SELECT occ_code, occ_title, a_mean::float, tot_emp FROM jobs WHERE a_mean > 100000 ORDER BY a_mean;")
         result = conn.execute(sql)
-    joblist = [row.items() for row in result]
-    breakpoint()
+    joblist = [list(row) for row in result]
     return json.dumps(joblist)
-    return joblist
 
-# @app.get("/jobs/{job_id}")
-# async def job(job_id):
-#     job_id = int(job_id)
-#     if job_id >= 0 and job_id < len(joblist):
-#         return joblist[job_id]
-#     else:
-#         return "error"
+@app.get("/jobs/{job_id}")
+async def job(job_id):
+    conn_string = os.environ.get("DB_URL")
+    engine = create_engine(conn_string)
+    with engine.connect() as conn:
+        sql=text(f"SELECT occ_code, occ_title, a_mean::float, tot_emp FROM jobs WHERE occ_code = '{job_id}';")
+        result = conn.execute(sql)
+    joblist = [list(row) for row in result]
+    return json.dumps(joblist)

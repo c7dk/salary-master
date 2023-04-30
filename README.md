@@ -13,5 +13,5 @@ poetry shell
 To start the FastAPI server run
 
 ```
-uvicorn main:app --reload
+uvicorn src.api.main:app --reload
 ```
