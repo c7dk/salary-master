@@ -1,0 +1,14 @@
+[Unit]
+Description=Salary Master
+After=network.target
+
+[Service]
+User=ubuntu
+Environment="DB_URL=postgresql://postgres:3D4Hy#QsZS6#W3@localhost/salarymaster"
+WorkingDirectory=/home/ubuntu/_proj/salary-master-backend
+LimitNOFILE=4096
+ExecStart=/home/ubuntu/.local/bin/poetry run uvicorn src.api.main:app --host 0.0.0.0
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target
